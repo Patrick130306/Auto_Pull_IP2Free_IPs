@@ -140,16 +140,11 @@ def _build_yaml(proxies: list[Dict[str, Any]]) -> str:
 
 
 def _dest_path() -> Path:
-    # ========== 核心修改部分 ==========
-    # 1. 替换为你指定的桌面绝对路径
-    desktop = Path(r"D:\HuaweiMoveData\Users\Patrick\Desktop")
-    # 2. 拼接 proxy 文件夹路径
+    desktop = Path(os.path.expanduser("~/Desktop"))
     proxy_folder = desktop / "proxy"
-    # 3. 确保文件夹存在（不存在则创建）
     proxy_folder.mkdir(exist_ok=True, parents=True)
-    # 4. 固定文件名为 proxies.yaml
     return proxy_folder / "proxies.yaml"
-    # ========== 核心修改部分 ==========
+
 
 
 def main() -> None:
