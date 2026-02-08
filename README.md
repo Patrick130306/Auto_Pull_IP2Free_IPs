@@ -1,6 +1,6 @@
 # IP2FREE Agent
 
-Small Python helper that logs into IP2FREE, pulls the free proxy list, and writes a Clash-style YAML to your desktop (`YYYY-MM-DD.yaml`). A few saved HTML pages (`login.html`, `tmp_login_after.html`, `dashboard.html`) and JS chunks are included as snapshots of the IP2FREE UI.
+Small Python helper that logs into IP2FREE, pulls the free proxy list, and writes a Clash-style YAML(`proxies.yaml`) to a folder named "proxy" on your desktop,it will auto-create a folde if there is not a folder named("proxy"). A few saved HTML pages (`login.html`, `tmp_login_after.html`, `dashboard.html`) and JS chunks are included as snapshots of the IP2FREE UI.
 
 ## Prerequisites
 - Python 3.9+
@@ -21,7 +21,7 @@ Run the agent; it will print where the YAML was written:
 python ip2free_agent.py
 ```
 
-The file is placed on your desktop and includes all available free proxies as a selectable group. The YAML contains the usernames and passwords returned by IP2FREE—treat it as a secret.
+The file is placed in folder("proxy") and includes all available free proxies as a selectable group. The YAML contains the usernames and passwords returned by IP2FREE—treat it as a secret.
 
 Example snippet:
 
@@ -44,9 +44,3 @@ proxy-groups:
 
 ## Notes
 - To fetch more or fewer pages, tweak the defaults in `_fetch_free_ips` inside `ip2free_agent.py`.
-- Generated YAML files are ignored by Git via `.gitignore` to avoid accidentally committing secrets.
-
-## Repository contents
-- `ip2free_agent.py`: the agent script that calls the IP2FREE API and builds the Clash YAML.
-- `login.html`, `tmp_login_after.html`, `dashboard.html`: saved IP2FREE pages for reference.
-- `chunk_6074.js`, `chunk_9346.js`, `layout.js`, `login_chunk.js`: JS bundles saved from the IP2FREE site.
