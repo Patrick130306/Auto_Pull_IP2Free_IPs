@@ -170,13 +170,39 @@ dns:
         
         return config
     
+    def get_save_path(self):
+        """获取配置文件保存路径"""
+        # 检查是否设置了自定义路径
+        custom_path = os.environ.get("IP2FREE_CONFIG_PATH")
+        
+        if custom_path:
+            # 处理相对路径
+            if custom_path == ".":
+                # 当前目录
+                save_dir = Path.cwd()
+            elif custom_path.startswith("."):
+                # 相对路径
+                save_dir = Path.cwd() / custom_path
+            else:
+                # 绝对路径或用户主目录路径
+                save_dir = Path(custom_path).expanduser()
+            
+            print(f"使用自定义保存路径: {save_dir}")
+        else:
+            # 默认路径：桌面上的proxy文件夹
+            desktop = Path.home() / "Desktop"
+            save_dir = desktop / "proxy"
+            print(f"使用默认保存路径: {save_dir}")
+        
+        # 创建目录（如果不存在）
+        save_dir.mkdir(parents=True, exist_ok=True)
+        
+        # 返回完整的文件路径
+        return save_dir / "proxies.yaml"
+    
     def save_config(self, config):
         """保存配置文件"""
-        desktop = Path.home() / "Desktop"
-        proxy_dir = desktop / "proxy"
-        proxy_dir.mkdir(exist_ok=True)
-        
-        config_file = proxy_dir / "proxies.yaml"
+        config_file = self.get_save_path()
         config_file.write_text(config, encoding="utf-8")
         
         print(f"配置文件已保存到: {config_file}")
