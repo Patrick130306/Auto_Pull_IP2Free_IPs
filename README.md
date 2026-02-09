@@ -32,24 +32,6 @@ python ip2free_agent.py
 
 The file is placed in folder("proxy") and includes all available free proxies as a selectable group. The YAML contains the usernames and passwords returned by IP2FREE—treat it as a secret.
 
-Example snippet:
-
-```yaml
-proxies:
-  - name: "ip2free-US-New_York-123"
-    type: socks5
-    server: 203.0.113.10
-    port: 1080
-    username: user
-    password: pass
-
-proxy-groups:
-  - name: "PROXY"
-    type: select
-    proxies:
-      - "ip2free-US-New_York-123"
-      - DIRECT
-```
 
 ### Notes
 - To fetch more or fewer pages, tweak the defaults in `_fetch_free_ips` inside `ip2free_agent.py`.
@@ -82,24 +64,7 @@ python ip2free_agent.py
 
 文件将保存在名为“proxy”的文件夹中，并包含所有可用的免费代理作为一个可选组。YAML 中包含 IP2FREE 返回的用户名和密码，请将其视为机密信息。
 
-示例片段：
 
-```yaml
-proxies:
-  - name: "ip2free-US-New_York-123"
-    type: socks5
-    server: 203.0.113.10
-    port: 1080
-    username: user
-    password: pass
-
-proxy-groups:
-  - name: "PROXY"
-    type: select
-    proxies:
-      - "ip2free-US-New_York-123"
-      - DIRECT
-```
 
 ### 注意事项
 - 若要获取更多或更少的页面，请在 `ip2free_agent.py` 中的 `_fetch_free_ips` 函数中调整默认值。
@@ -132,24 +97,7 @@ python ip2free_agent.py
 
 檔案將儲存在名為“proxy”的資料夾中，並包含所有可用的免費代理作為一個可選組。YAML 中包含 IP2FREE 返回的使用者名稱和密碼，請將其視為機密資訊。
 
-示例片段：
 
-```yaml
-proxies:
-  - name: "ip2free-US-New_York-123"
-    type: socks5
-    server: 203.0.113.10
-    port: 1080
-    username: user
-    password: pass
-
-proxy-groups:
-  - name: "PROXY"
-    type: select
-    proxies:
-      - "ip2free-US-New_York-123"
-      - DIRECT
-```
 
 ### 注意事項
 - 若要獲取更多或更少的頁面，請在 `ip2free_agent.py` 中的 `_fetch_free_ips` 函式中調整預設值。
